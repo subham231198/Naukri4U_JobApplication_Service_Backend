@@ -52,7 +52,8 @@ public class SecurityConfig {
                                 "/recruiter/job",
                                 "/candidate/job/apply",
                                 "/admin/dpCloud/session",
-                                "/login/v1/dpCloud/auth"
+                                "/login/v1/dpCloud/auth",
+                                "/admin/dpCloud/getOTP"
                         ).permitAll()
                         .anyRequest().authenticated()
                 )
@@ -67,7 +68,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // ✅ SINGLE CORS CONFIG (NO DUPLICATE ANYWHERE)
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
 

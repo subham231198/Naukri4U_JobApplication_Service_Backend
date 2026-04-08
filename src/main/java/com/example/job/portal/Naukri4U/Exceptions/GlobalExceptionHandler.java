@@ -3,6 +3,7 @@ package com.example.job.portal.Naukri4U.Exceptions;
 
 import com.example.job.portal.Naukri4U.Entity.APIResponse;
 import com.example.job.portal.Naukri4U.Repository.UserRepo;
+import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -184,7 +185,7 @@ public class GlobalExceptionHandler
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("code", 401);
         result.put("reason", "Unauthorized");
-        result.put("message", "Login Failure!");
+        result.put("message", "Login Failure! Pending approval...");
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
                 .body(result);
@@ -252,6 +253,17 @@ public class GlobalExceptionHandler
         result.put("code", 401);
         result.put("reason", "Unauthorized");
         result.put("message", "Profile Locked!");
+        return ResponseEntity
+                .status(HttpStatus.UNAUTHORIZED)
+                .body(result);
+    }
+
+    @ExceptionHandler(CareerDetailsNotUpdatedException.class)
+    public ResponseEntity<Map<String, Object>> ExpInfoNotUpdatedException() {
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("code", 401);
+        result.put("reason", "Unauthorized");
+        result.put("message", "Access Denied!");
         return ResponseEntity
                 .status(HttpStatus.UNAUTHORIZED)
                 .body(result);

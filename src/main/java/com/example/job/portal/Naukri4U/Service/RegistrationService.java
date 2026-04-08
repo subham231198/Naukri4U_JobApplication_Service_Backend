@@ -206,7 +206,7 @@ public class RegistrationService
             otpRepo.save(otpEntity);
         }
         userAuthRepo.save(userAuthEntity);
-        return new ResponseEntity<>(Map.of("message", "User registered successfully"), HttpStatus.CREATED);
+        return new ResponseEntity<>(Map.of("message", "User registered successful!"), HttpStatus.CREATED);
     }
 
 
@@ -323,7 +323,7 @@ public class RegistrationService
         otpEntity.setExpiry_timeStamp("1111-01-01T11:11:11.111Z");
         otpRepo.save(otpEntity);
 
-        return new ResponseEntity<>(Map.of("message", "Admin registered successfully! username = "+username), HttpStatus.CREATED);
+        return new ResponseEntity<>(Map.of("message", "Admin registered successful! username = "+username), HttpStatus.CREATED);
     }
 }
 

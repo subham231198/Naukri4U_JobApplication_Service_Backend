@@ -6,6 +6,7 @@ import com.example.job.portal.Naukri4U.Entity.CandidateEntity;
 import com.example.job.portal.Naukri4U.Entity.UserEntity;
 import com.example.job.portal.Naukri4U.Exceptions.ApplicationAlreadyExisits;
 import com.example.job.portal.Naukri4U.Exceptions.CandidateNotFoundException;
+import com.example.job.portal.Naukri4U.Exceptions.CareerDetailsNotUpdatedException;
 import com.example.job.portal.Naukri4U.Exceptions.NoCandidateAgainstApplicationException;
 import com.example.job.portal.Naukri4U.Repository.ApplicationRepo;
 import com.example.job.portal.Naukri4U.Repository.CandidateRepo;
@@ -79,7 +80,7 @@ public class ApplicationService {
                 || current_company.equals("") || designation.isEmpty()
                 || designation == null || YOE == -1 || salary == -1 || skills.contains("TBD"))
         {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Candidate yet to provide career info!");
+            throw new CareerDetailsNotUpdatedException("Candidate yet to provide career info!");
         }
 
 

@@ -46,7 +46,7 @@ public class AdminTestOTPService {
         {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Access denied!");
         }
-        Optional<OTPEntity> getUser = otpRepo.findByUsername(sessionInfo.get(username).toString());
+        Optional<OTPEntity> getUser = otpRepo.findByUsername(username);
         if(!getUser.isPresent())
         {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid username provided!");

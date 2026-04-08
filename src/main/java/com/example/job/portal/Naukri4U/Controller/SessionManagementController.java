@@ -21,8 +21,12 @@ public class SessionManagementController {
     @Autowired
     private PolicyDecisionPointService pdpService;
 
-    @PostMapping(value = "/v1/session/keep-alive", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Map<String, Object>> keepAlive(@RequestHeader("X-XSRF-TOKEN") String csrf, @RequestHeader(name = "X-SESSIONID") String sessionId, @RequestBody KeepAlive request) {
+    @PostMapping(value = "/v1/session/keep-alive",
+            consumes = "application/json",
+            produces = "application/json")
+    public ResponseEntity<Map<String, Object>> keepAlive(@RequestHeader("X-XSRF-TOKEN") String csrf,
+                                                         @RequestHeader(name = "X-SESSIONID") String sessionId,
+                                                         @RequestBody KeepAlive request) {
         String tokenId = request.getTokenId();
         if(csrf == null || csrf.isEmpty() )
         {
@@ -45,7 +49,10 @@ public class SessionManagementController {
 
 
     @PostMapping(value = "/v1/session/info", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Map<String, Object>> sessionAttributes(@RequestHeader("X-XSRF-TOKEN") String csrf, @RequestHeader(name = "X-SESSIONID") String sessionId, @RequestBody KeepAlive request) {
+    public ResponseEntity<Map<String, Object>> sessionAttributes(
+            @RequestHeader("X-XSRF-TOKEN") String csrf,
+            @RequestHeader(name = "X-SESSIONID") String sessionId,
+            @RequestBody KeepAlive request) {
         String tokenId = request.getTokenId();
         if(csrf == null || csrf.isEmpty() )
         {
@@ -67,7 +74,9 @@ public class SessionManagementController {
     }
 
     @PostMapping(value = "/v1/session/logout", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Map<String, Object>> logout(@RequestHeader("X-XSRF-TOKEN") String csrf, @RequestBody LogOffProvider logOffProvider)
+    public ResponseEntity<Map<String, Object>> logout(
+            @RequestHeader("X-XSRF-TOKEN") String csrf,
+            @RequestBody LogOffProvider logOffProvider)
     {
         String token_type = logOffProvider.getInputTokenState().getToken_type();
         String tokenId = logOffProvider.getInputTokenState().getTokenId();
